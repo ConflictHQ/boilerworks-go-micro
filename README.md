@@ -1,11 +1,61 @@
 # Boilerworks Go Micro
 
-> Lightweight Go API-only service with Chi or Echo. No frontend.
+> Lightweight Go microservice with Chi router, sqlc, goose, and API-key auth.
+> No frontend, no sessions -- pure API service.
 
-**Status:** Planned
+## Stack
 
-Go API-only microservice for teams that want maximum performance, minimal memory footprint, and fast startup times. Single binary deployment, no runtime dependencies. Ideal for high-throughput API gateways, webhook processors, data ingestion services, and infrastructure tooling.
+| Layer | Technology |
+|-------|-----------|
+| Backend | Go 1.22+ (Chi router) |
+| Queries | sqlc (type-safe SQL) |
+| Migrations | goose |
+| Database | PostgreSQL 16 |
+| Auth | API-key (SHA256, per-key scopes) |
+| Linting | golangci-lint |
 
-## Want to help build this?
+## Getting Started
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the [stack primer](../primers/go/PRIMER.md) for architecture and conventions.
+```bash
+# Start services
+docker compose up -d --build
+
+# Get your seed API key (shown once on first boot)
+docker compose logs api | grep "Plaintext key"
+
+# Test it
+curl http://localhost:8080/health
+curl -H "X-API-Key: bw_seed_key_change_me_in_production" http://localhost:8080/events
+```
+
+## Endpoints
+
+| Method | Path | Auth | Scope | Description |
+|--------|------|------|-------|-------------|
+| GET | /health | None | - | Health check |
+| POST | /events | API Key | events.write | Create event |
+| GET | /events | API Key | events.read | List events |
+| GET | /events/{id} | API Key | events.read | Event detail |
+| DELETE | /events/{id} | API Key | events.write | Soft delete |
+| POST | /api-keys | API Key | keys.manage | Create key |
+| GET | /api-keys | API Key | keys.manage | List keys |
+| DELETE | /api-keys/{id} | API Key | keys.manage | Revoke key |
+
+## Commands
+
+```bash
+make up             # Start Docker services
+make down           # Stop services
+make build          # Build binary
+make test           # Run tests
+make lint           # golangci-lint
+make migrate-up     # Run migrations
+make migrate-down   # Rollback migration
+make sqlc-generate  # Regenerate sqlc queries
+make logs           # Tail container logs
+```
+
+## Documentation
+
+- [bootstrap.md](bootstrap.md) -- Conventions and patterns
+- [CLAUDE.md](CLAUDE.md) -- Agent shim

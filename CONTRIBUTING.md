@@ -4,18 +4,24 @@ Thank you for your interest in contributing!
 
 ## Getting Started
 
-This template is currently planned. See the [stack primer](../primers/go/PRIMER.md) for the architecture and build plan.
+1. Clone the repository
+2. Run `docker compose up -d --build` to start all services
+3. Read [bootstrap.md](bootstrap.md) for conventions
 
 ## Development Process
 
 1. Fork the repository
 2. Create a feature branch from `main`
 3. Make your changes
-4. Submit a pull request
+4. Run `make lint` and `make test`
+5. Submit a pull request
 
 ## Code Style
 
-Will be defined as the template is built. See the stack primer for planned conventions.
+- Follow standard Go conventions (`gofmt`, `go vet`)
+- Use `golangci-lint` for static analysis
+- sqlc generates query code -- edit SQL in `db/queries/`, not Go files in `internal/database/queries/`
+- All handlers return `ApiResponse` format
 
 ## Questions?
 

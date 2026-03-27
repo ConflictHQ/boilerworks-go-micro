@@ -1,5 +1,5 @@
 # Agents -- Boilerworks Go Micro
 
-Primary conventions doc: [`bootstrap.md`](bootstrap.md)
+Read [`bootstrap.md`](bootstrap.md) before making any changes.
 
-Read it before writing any code.
+This is the definitive conventions document for this codebase.
