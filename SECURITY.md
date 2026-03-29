@@ -6,7 +6,7 @@ If you discover a security vulnerability in Boilerworks, please report it respon
 
 **Do not open a public issue.**
 
-Instead, email **security@conflict.dev** with:
+Instead, email **security@weareconflict.com** with:
 
 - Description of the vulnerability
 - Steps to reproduce

@@ -59,3 +59,7 @@ make logs           # Tail container logs
 
 - [bootstrap.md](bootstrap.md) -- Conventions and patterns
 - [CLAUDE.md](CLAUDE.md) -- Agent shim
+
+---
+
+Boilerworks is a [Conflict](https://weareconflict.com) brand. CONFLICT is a registered trademark of Conflict LLC.
