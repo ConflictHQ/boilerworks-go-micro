@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: boilerworks
     ports:
-      - "5438:5432"
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -31,7 +31,7 @@ services:
   api:
     build: .
     ports:
-      - "8080:8080"
+      - "8000:8080"
     environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/boilerworks?sslmode=disable
       PORT: "8080"
