@@ -24,8 +24,6 @@ linters:
       locale: US
 
 issues:
-  exclude-dirs:
-    - vendor
   exclude-rules:
     - path: _test\.go
       linters:
