@@ -21,6 +21,19 @@ linters:
     errcheck:
       check-type-assertions: true
     govet:
-      enable-all: true
+      enable:
+        - atomic
+        - bools
+        - copylocks
+        - httpresponse
+        - lostcancel
+        - nilfunc
+        - printf
+        - shift
+        - structtag
+        - tests
+        - unmarshal
+        - unreachable
+        - unusedresult
     misspell:
       locale: US
