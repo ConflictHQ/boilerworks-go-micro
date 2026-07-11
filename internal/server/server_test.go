@@ -50,8 +50,8 @@ func TestMain(m *testing.M) {
 	testQ = queries.New(pool)
 
 	// Clean up test data
-	pool.Exec(ctx, "DELETE FROM events")
-	pool.Exec(ctx, "DELETE FROM api_keys")
+	_, _ = pool.Exec(ctx, "DELETE FROM events")
+	_, _ = pool.Exec(ctx, "DELETE FROM api_keys")
 
 	// Create test API keys
 	createTestKey(ctx, adminKey, []string{"*"})
@@ -63,8 +63,8 @@ func TestMain(m *testing.M) {
 	code := m.Run()
 
 	// Cleanup
-	pool.Exec(ctx, "DELETE FROM events")
-	pool.Exec(ctx, "DELETE FROM api_keys")
+	_, _ = pool.Exec(ctx, "DELETE FROM events")
+	_, _ = pool.Exec(ctx, "DELETE FROM api_keys")
 	pool.Close()
 	os.Exit(code)
 }
@@ -72,7 +72,7 @@ func TestMain(m *testing.M) {
 func createTestKey(ctx context.Context, rawKey string, scopes []string) {
 	hash := sha256.Sum256([]byte(rawKey))
 	keyHash := hex.EncodeToString(hash[:])
-	testQ.CreateApiKey(ctx, queries.CreateApiKeyParams{
+	_, _ = testQ.CreateApiKey(ctx, queries.CreateApiKeyParams{
 		Name:    "test-" + rawKey[:8],
 		KeyHash: keyHash,
 		Scopes:  scopes,
@@ -231,7 +231,7 @@ func TestGetEvent(t *testing.T) {
 			ID string `json:"id"`
 		} `json:"data"`
 	}
-	json.Unmarshal(createW.Body.Bytes(), &createResp)
+	_ = json.Unmarshal(createW.Body.Bytes(), &createResp)
 
 	w := doRequest("GET", "/events/"+createResp.Data.ID, nil, adminKey)
 	if w.Code != http.StatusOK {
@@ -255,7 +255,7 @@ func TestSoftDeleteEvent(t *testing.T) {
 			ID string `json:"id"`
 		} `json:"data"`
 	}
-	json.Unmarshal(createW.Body.Bytes(), &createResp)
+	_ = json.Unmarshal(createW.Body.Bytes(), &createResp)
 
 	// Delete it
 	w := doRequest("DELETE", "/events/"+createResp.Data.ID, nil, adminKey)
