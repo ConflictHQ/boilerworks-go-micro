@@ -6,7 +6,7 @@ Read it before writing any code.
 
 ## Stack
 
-- **Backend**: Go 1.22+ (Chi router)
+- **Backend**: Go 1.25+ (Chi router)
 - **Frontend**: None (API-only microservice)
 - **API**: REST with JSON responses
 - **Queries**: sqlc (type-safe SQL)
@@ -17,9 +17,9 @@ Read it before writing any code.
 
 | Endpoint | URL |
 |----------|-----|
-| Health | http://localhost:8080/health |
-| Events | http://localhost:8080/events |
-| API Keys | http://localhost:8080/api-keys |
+| Health | http://localhost:8000/health |
+| Events | http://localhost:8000/events |
+| API Keys | http://localhost:8000/api-keys |
 
 ## Commands
 

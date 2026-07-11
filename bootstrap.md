@@ -1,6 +1,6 @@
 # Boilerworks Go Micro -- Bootstrap
 
-> Go 1.22+ microservice with Chi router, sqlc queries, goose migrations,
+> Go 1.25+ microservice with Chi router, sqlc queries, goose migrations,
 > and API-key authentication. No frontend, no sessions -- pure API service.
 
 ## Architecture

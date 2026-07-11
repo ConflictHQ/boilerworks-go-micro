@@ -7,7 +7,7 @@
 
 | Layer | Technology |
 |-------|-----------|
-| Backend | Go 1.22+ (Chi router) |
+| Backend | Go 1.25+ (Chi router) |
 | Queries | sqlc (type-safe SQL) |
 | Migrations | goose |
 | Database | PostgreSQL 16 |
@@ -24,8 +24,8 @@ docker compose up -d --build
 docker compose logs api | grep "Plaintext key"
 
 # Test it
-curl http://localhost:8080/health
-curl -H "X-API-Key: bw_seed_key_change_me_in_production" http://localhost:8080/events
+curl http://localhost:8000/health
+curl -H "X-API-Key: bw_seed_key_change_me_in_production" http://localhost:8000/events
 ```
 
 ## Endpoints
