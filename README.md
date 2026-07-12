@@ -59,6 +59,7 @@ make logs           # Tail container logs
 
 - [bootstrap.md](bootstrap.md) -- Conventions and patterns
 - [CLAUDE.md](CLAUDE.md) -- Agent shim
+- [CALLIOPE.md](CALLIOPE.md) -- Agent shim (Calliope harness)
 
 ---
 
